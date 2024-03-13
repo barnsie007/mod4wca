@@ -1,0 +1,6 @@
+type: specs.openrewrite.org/v1beta/recipe
+name: com.ibm.testRecipe
+recipeList:
+  - org.openrewrite.java.liberty.ServerName
+  - org.openrewrite.java.liberty.RemoveWas2LibertyNonPortableJndiLookup
+  - org.openrewrite.java.liberty.WebSphereUnavailableSSOCookieMethod

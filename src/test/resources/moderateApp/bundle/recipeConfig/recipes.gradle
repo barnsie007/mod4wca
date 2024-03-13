@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'org.openrewrite.rewrite' version '6.1.25'
+}
+
+rewrite {
+    activeRecipe(
+        // Getting the server name on Liberty
+        'org.openrewrite.java.liberty.ServerName',
+        // Use the default InitialContext JNDI properties
+        'org.openrewrite.java.liberty.RemoveWas2LibertyNonPortableJndiLookup',
+        // Do not use the WSSecurityHelper revokeSSOCookies method
+        'org.openrewrite.java.liberty.WebSphereUnavailableSSOCookieMethod',
+    )
+}
+
+dependencies {
+        rewrite('org.openrewrite.recipe:rewrite-liberty:1.0.0')
+}
